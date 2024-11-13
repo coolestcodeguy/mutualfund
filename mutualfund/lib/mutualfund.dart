@@ -13,7 +13,6 @@ const List<(PeriodOptions, String)> periodOptions = <(PeriodOptions, String)>[
 ];
 
 class MutualFundDetailsPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +48,8 @@ class MutualFundDetailsPage extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'IP',
-                        style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -60,7 +60,8 @@ class MutualFundDetailsPage extends StatelessWidget {
                       children: [
                         Text(
                           'ICICI Pru Value Discovery Fund',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           'By ICICI group',
@@ -93,16 +94,21 @@ class MutualFundDetailsPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('CAGR (Annualized return)', style: TextStyle(color: Colors.grey)),
+                              Text('CAGR (Annualized return)',
+                                  style: TextStyle(color: Colors.grey)),
                               Text(
                                 '+23.98 %',
-                                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.green),
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green),
                               ),
                             ],
                           ),
                           DropdownButton<String>(
                             value: '3 years',
-                            items: ['1 year', '3 years', '5 years'].map((String value) {
+                            items: ['1 year', '3 years', '5 years']
+                                .map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -113,10 +119,13 @@ class MutualFundDetailsPage extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 16),
-                      Text('Current NAV (As per 26th September 2024)', style: TextStyle(color: Colors.grey)),
+                      Text('Current NAV (As per 26th September 2024)',
+                          style: TextStyle(color: Colors.grey)),
                       Row(
                         children: [
-                          Text('493.80', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                          Text('493.80',
+                              style: TextStyle(
+                                  fontSize: 24, fontWeight: FontWeight.bold)),
                           SizedBox(width: 8),
                           Text('+2.34%', style: TextStyle(color: Colors.green)),
                         ],
@@ -149,29 +158,34 @@ class MutualFundDetailsPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 16),
-                      ToggleButtons(
-                        children: ['3M', '6M', '1Y', '3Y', 'MAX', 'SIP'].map((String label) {
-                          return Text(label);
-                        }).toList(),
-                        onPressed: (int index) {
-                          // setState(() {
-                          //   _selectedPeriodIndex = index;
-                          // });
-                        },
-                        isSelected: List.generate(6, (int index) => index == 1),
-                        color: Colors.blue,
-                        selectedColor: Colors.white,
-                        fillColor: Colors.grey[300],
-                        // borderRadius: BorderRadius.circular(8),
-                        // constraints: BoxConstraints(minWidth: 64, maxWidth: 128),
-                        // constraints: BoxConstraints(minHeight: 32, maxHeight: 48),
-                      ),
+                      LayoutBuilder(builder: (context, constraints) {
+                        return ToggleButtons(
+                          children: ['3M', '6M', '1Y', '3Y', 'MAX', 'SIP']
+                              .map((String label) {
+                            return Text(label);
+                          }).toList(),
+                          onPressed: (int index) {
+                            // setState(() {
+                            //   _selectedPeriodIndex = index;
+                            // });
+                          },
+                          isSelected:
+                              List.generate(6, (int index) => index == 1),
+                          color: Colors.blue,
+                          selectedColor: Colors.white,
+                          fillColor: Colors.grey[300],
+                          // borderRadius: BorderRadius.circular(8),
+                          // constraints: BoxConstraints(minWidth: 64, maxWidth: 128),
+                          constraints: BoxConstraints(minHeight: 32, minWidth: 0.16 * constraints.maxWidth),
+                        );
+                      })
                     ],
                   ),
                 ),
               ),
               SizedBox(height: 24),
-              Text('Key metrics', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text('Key metrics',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -9,7 +9,7 @@ class MutualFundsScreen extends StatefulWidget {
 
 class _MutualFundsScreenState extends State<MutualFundsScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  int _selectedIndex = 1; // Mutual funds tab selected by default
+  int _selectedIndex = 1;
 
   @override
   void initState() {
@@ -172,7 +172,7 @@ class _MutualFundsScreenState extends State<MutualFundsScreen> with SingleTicker
             _selectedIndex = index;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: 'Home',
@@ -182,7 +182,24 @@ class _MutualFundsScreenState extends State<MutualFundsScreen> with SingleTicker
             label: 'Mutual funds',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.book_outlined),
+            icon: Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.purple[100], // Background color similar to the example
+              ),
+              child: Center(
+                child: Text(
+                  'W', // Replace with your desired icon or image
+                  style: TextStyle(
+                    fontSize: 24, // Increase font size or icon size
+                    color: Colors.purple,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
             label: 'Advisory',
           ),
           BottomNavigationBarItem(
